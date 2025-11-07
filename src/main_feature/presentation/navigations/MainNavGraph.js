@@ -19,7 +19,7 @@ const MainNavGraph = () => {
     <NavigationContainer>
       <StatusBar barStyle="dark-content" />
         <Tab.Navigator 
-        initialRouteName='explore'
+        initialRouteName='home'
         screenOptions={({route})=> ({
           headerShown: false,
           tabBarIcon: ({focused, color, size})=>{
