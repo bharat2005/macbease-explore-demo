@@ -10,16 +10,28 @@ import SearchScreen from '../search/SearchScreen'
 import { Ionicons, FontAwesome, Feather } from '@expo/vector-icons';
 import Colors from '../../../../constants/Colors'
 
+import { useFonts } from 'expo-font'
 
 
 const Tab = createBottomTabNavigator()
 
 const MainNavGraph = () => {
+  
+  useFonts({
+    "poppins-bold":require("../../../../assets/font/Poppins-Bold.ttf"),
+    "poppins-light":require("../../../../assets/font/Poppins-Light.ttf"),
+    "poppins-medium":require("../../../../assets/font/Poppins-Medium.ttf"),
+    "poppins-regular":require("../../../../assets/font/Poppins-Regular.ttf"),
+    "poppins-semibold":require("../../../../assets/font/Poppins-SemiBold.ttf"),
+  })
+  
+
+
   return (
     <NavigationContainer>
       <StatusBar barStyle="dark-content" />
         <Tab.Navigator 
-        initialRouteName='home'
+        initialRouteName='explore'
         screenOptions={({route})=> ({
           headerShown: false,
           tabBarIcon: ({focused, color, size})=>{

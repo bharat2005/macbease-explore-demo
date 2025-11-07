@@ -1,13 +1,17 @@
-import { View, Text, Touchable, TouchableOpacity, FlatList } from 'react-native'
+import { View, Text, Touchable, TouchableOpacity, FlatList, Image } from 'react-native'
 import React from 'react'
 import Feather from '@expo/vector-icons/Feather';
+import CrousalHeader from './CrousalHeader';
 
 const profData = [
-    {id:1, name : "Reny Roi", image:''},
-    // {id:2, name : "Harjeet Singh", image:''},
-    // {id:3, name : "Deepak Kumar", image:''},
-    // {id:4, name : "Robin Mathur", image:''},
-    // {id:5, name : "Suman Rana", image:''},
+    {id:6, name : "Prof. Deepak", image:'https://tse1.mm.bing.net/th/id/OIP.8yaAxUaTZN-9DSELK-O27wHaHs?rs=1&pid=ImgDetMain&o=7&rm=3'},
+    {id:1, name : "Prof. Reny", image:'https://tse1.mm.bing.net/th/id/OIP.rmHgX0RSd9-VwUuvatYinwAAAA?rs=1&pid=ImgDetMain&o=7&rm=3'},
+    {id:4, name : "Prof. Robin", image:'https://tse2.mm.bing.net/th/id/OIP.lRzzLJxniEwV6uYV_b5YXAAAAA?rs=1&pid=ImgDetMain&o=7&rm=3'},
+    {id:2, name : "Prof. Harjeet", image:'https://tse3.mm.bing.net/th/id/OIP.zngmWYCUPQqUoLABcuy7fwAAAA?rs=1&pid=ImgDetMain&o=7&rm=3'},
+    {id:3, name : "Naranyan", image:'https://fruitgrowersnews.com/wp-content/uploads/2018/09/Hanu-IMG_99635-copy-e1536854970438-194x300.jpg'},
+    {id:5, name : "Prof. Joshpe", image:'https://th.bing.com/th/id/OIP.ednnikF8xWtB1o2y1lniTwAAAA?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3'},
+    {id:7, name : "Prof. Srinivas", image:'https://www.iso.org/files/live/sites/isoorg/files/archive/Ref1819/dr.jayathilak.jpg'},
+    {id:8, name : "Prof. Samir", image:'https://tse1.mm.bing.net/th/id/OIP.8wQbghrSlfI2XR_qiUtL0AAAAA?w=215&h=269&rs=1&pid=ImgDetMain&o=7&rm=3'},
 
 ]
 
@@ -15,30 +19,22 @@ const ProfessorsView = () => {
 
     const profView = ({item}) =>{
         return (
-            <View style={{height:140, width:100, gap:8, justifyContent:'center', alignItems:'center', backgroundColor:'gray'}}>
+            <View style={{ width:100, gap:12, justifyContent:'center', alignItems:'center', marginHorizontal:8}}>
 
-                <View style={{backgroundColor:'black', borderRadius:'50%', height:'100%', width:'100%'}} />
+                <View style={{backgroundColor:'black', borderRadius:'50%', width:'100%',  aspectRatio:1, overflow:'hidden'}} >
+                    <Image source={{uri:item.image}} style={{height:'100%', width:'100%'}}/>
+                </View>
 
+                <Text style={{fontSize:14, color:'#000000ff',fontFamily:'poppins-regular'}}>{item.name}</Text>
+                
             </View>
         )
     }
   return (
     <View style={{width:'100%', marginVertical:16}}>
 
-        <View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between', paddingHorizontal:12}}>
 
-            <View style={{gap:4}}>
-                <Text style={{fontSize:18, fontWeight:'700',color:'black'}}>Professors</Text>
-                <Text style={{fontSize:12, fontWeight:'400', color:'gray'}}>find your best professiors</Text>
-            </View>
-
-            <TouchableOpacity style={{gap:2,flexDirection:'row', justifyContent:'center', alignContent:'center' }}>
-                <Text style={{fontSize:14, fontWeight:'400', color:'darkgray'}}>More</Text>
-                <Feather name="chevron-right" size={24} color="gray" />
-            </TouchableOpacity>
-            
-        </View>
-
+    <CrousalHeader title="Professors" text="Get in contact with profesors!" moreButton={true} moreText={"more"} />
 
     <FlatList
     style={{marginVertical:12}}
@@ -46,8 +42,8 @@ const ProfessorsView = () => {
     data={profData}
     showsHorizontalScrollIndicator={false}
     renderItem={profView}
-    contentContainerStyle={{width:'100%', paddingHorizontal:18}}
-    scrollEnabled
+    contentContainerStyle={{paddingHorizontal:12}}
+    scrollEnabled={true}
     />
 
       </View>

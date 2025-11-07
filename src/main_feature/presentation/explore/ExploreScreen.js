@@ -8,6 +8,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import CrousalView from './components/CrousalView';
 import AnimatedHeader from './components/AnimatedHeader';
 import ProfessorsView from './components/ProfessorsView';
+import EventsView from './components/EventsView';
+import ClubsView from './components/ClubsView';
 
 const colorHeaderHeight = 260
 
@@ -49,6 +51,16 @@ const ExploreScreen = () => {
         <CrousalView/>
 
         <ProfessorsView />
+
+        <EventsView  />
+
+        <ClubsView />
+
+  
+
+        <View style={{height:1000}} />
+
+
 
 
 
