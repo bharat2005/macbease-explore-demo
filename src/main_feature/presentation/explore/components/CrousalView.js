@@ -1,4 +1,4 @@
-import { View, Text, Dimensions } from 'react-native'
+import { View, Text, Dimensions, Image } from 'react-native'
 import React, { useState } from 'react'
 import Carousel, { } from 'react-native-reanimated-carousel'
 import Colors from '../../../../../constants/Colors'
@@ -7,10 +7,10 @@ import Colors from '../../../../../constants/Colors'
 const {width, height} = Dimensions.get('window')
 
 const crousalData = [
+    {id : 3, image: require('../../../../../assets/images/3.jpg')},
     {id : 1, image: require('../../../../../assets/images/1.jpg')},
-    {id : 1, image: ''},
-    {id : 1, image: ''},
-    {id : 1, image: ''},
+    {id : 2, image: require('../../../../../assets/images/2.jpg')},
+    {id : 4, image: require('../../../../../assets/images/4.jpg')},
 ]
 
 const CrousalView = () => {
@@ -20,8 +20,8 @@ const CrousalView = () => {
 
     const crousalItem = ({item})=> {
         return (
-            <View style={{backgroundColor:'black', borderRadius:18, width:'90%',height:'100%', alignSelf:'center'}}>
-
+            <View style={{backgroundColor:'gray', borderRadius:18, width:'90%',height:'100%', alignSelf:'center'}}>
+                <Image source={item.image} resizeMode='cover' style={{height:'100%', width:'100%', borderRadius:18}}/>
             </View>
         )
     }

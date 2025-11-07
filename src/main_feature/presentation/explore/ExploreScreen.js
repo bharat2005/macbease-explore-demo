@@ -7,6 +7,7 @@ import Animated, { interpolate, useAnimatedScrollHandler, useAnimatedStyle, useS
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import CrousalView from './components/CrousalView';
 import AnimatedHeader from './components/AnimatedHeader';
+import ProfessorsView from './components/ProfessorsView';
 
 const colorHeaderHeight = 260
 
@@ -47,14 +48,11 @@ const ExploreScreen = () => {
 
         <CrousalView/>
 
-        {
-          [...Array(10).fill(0)].map((_,index)=>{
-            return (
-              <View key={index} style={{width:'100%', height:150, backgroundColor:'lightgray', marginVertical:12}}>
-              </View>
-            )
-          })
-        }
+        <ProfessorsView />
+
+
+
+
 
       </Animated.ScrollView>
 
