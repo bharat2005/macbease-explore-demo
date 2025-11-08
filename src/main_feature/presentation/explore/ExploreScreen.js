@@ -10,6 +10,7 @@ import AnimatedHeader from './components/AnimatedHeader';
 import ProfessorsView from './components/ProfessorsView';
 import EventsView from './components/EventsView';
 import ClubsView from './components/ClubsView';
+import TagsView from './components/TagsView';
 
 const colorHeaderHeight = 260
 
@@ -55,6 +56,12 @@ const ExploreScreen = () => {
         <EventsView  />
 
         <ClubsView />
+
+        <TagsView  />
+
+        
+
+
 
   
 
