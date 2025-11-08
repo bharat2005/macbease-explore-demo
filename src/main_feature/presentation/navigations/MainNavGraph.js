@@ -31,16 +31,16 @@ const MainNavGraph = () => {
     <NavigationContainer>
       <StatusBar barStyle="dark-content" />
         <Tab.Navigator 
-        initialRouteName='explore'
+        initialRouteName='Explore'
         screenOptions={({route})=> ({
           headerShown: false,
           tabBarIcon: ({focused, color, size})=>{
             let icon
-            if(route.name === "home"){
+            if(route.name === "Home"){
               icon = focused ? <FontAwesome name="home" size={size} color={color} /> : <FontAwesome name="home" size={size} color={color} />
-            } else if(route.name === "explore"){
-              icon = focused ? <Ionicons name="compass" size={size} color={color} /> : <Ionicons name="compass" size={size} color={color} />
-            } else if(route.name === "search"){
+            } else if(route.name === "Explore"){
+              icon = focused ? <Ionicons name="compass" size={size} color={color} /> : <Ionicons name="compass-outline" size={size} color={color} />
+            } else if(route.name === "Search"){
               icon = focused ? <Feather name="search" size={size} color={color} /> : <Feather name="search" size={size} color={color} />
             }
             return icon;
@@ -49,9 +49,9 @@ const MainNavGraph = () => {
           tabBarInactiveTintColor: 'black',
 
         })}>
-          <Tab.Screen name={"home"} component={HomeScreen}/>
-          <Tab.Screen name={"explore"} component={ExploreScreen}/>
-          <Tab.Screen name={"search"} component={SearchScreen}/>
+          <Tab.Screen name={"Home"} component={HomeScreen}/>
+          <Tab.Screen name={"Explore"} component={ExploreScreen}/>
+          <Tab.Screen name={"Search"} component={SearchScreen}/>
         </Tab.Navigator>
     </NavigationContainer>
   )

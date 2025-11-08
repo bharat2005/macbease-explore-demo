@@ -11,6 +11,7 @@ import ProfessorsView from './components/ProfessorsView';
 import EventsView from './components/EventsView';
 import ClubsView from './components/ClubsView';
 import TagsView from './components/TagsView';
+import DocsView from './components/DocsView';
 
 const colorHeaderHeight = 260
 
@@ -59,13 +60,8 @@ const ExploreScreen = () => {
 
         <TagsView  />
 
-        
+        <DocsView/>
 
-
-
-  
-
-        <View style={{height:1000}} />
 
 
 
