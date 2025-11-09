@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import EventsSearchTabBar from './components/EventsSearchTabBar'
 import FilterBottomSheet from './components/FilterBottomSheet'
 import TimingFilterBar from './components/TimingFilterBar'
+import EventsTabsView from './components/EventsTabsView'
 
 const EventsScreen = () => {
   const sheetRef = useRef(null)
@@ -14,7 +15,9 @@ const EventsScreen = () => {
 
         <TimingFilterBar />
 
-        
+        <EventsTabsView />
+
+
 
 
       <FilterBottomSheet sheetRef={sheetRef} onSheetClose={()=>{sheetRef.current.dismiss()}} />
