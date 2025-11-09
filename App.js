@@ -30,7 +30,7 @@ export default function App() {
         <StatusBar barStyle="dark-content" />
         <RootStack.Navigator initialRouteName='maingraph' screenOptions={{headerShown:false}}>
             <RootStack.Screen name='maingraph' component={MainNavGraph} />
-            <RootStack.Screen name="eventsgraph" component={EventsNavGraph} />
+            <RootStack.Screen name="eventsgraph" component={EventsNavGraph} options={{animation:'slide_from_right'}} />
         </RootStack.Navigator>
     </NavigationContainer>
     </BottomSheetModalProvider>

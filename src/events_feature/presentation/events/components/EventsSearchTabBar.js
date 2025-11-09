@@ -11,7 +11,7 @@ const EventsSearchTabBar = ({openBottomSheet}) => {
     <View style={{width:'100%', height:50,gap:12, flexDirection:'row', alignItems:'center', paddingVertical:6, paddingHorizontal:12}}>
       
       {/* NavigateBack */}
-      <TouchableOpacity onPress={()=>{navigation.navigate('maingraph',{screen:'Explore'})}}>
+      <TouchableOpacity onPress={()=>{navigation.goBack()}}>
         <Entypo name="chevron-thin-left" size={24} color="black" />
       </TouchableOpacity>
 

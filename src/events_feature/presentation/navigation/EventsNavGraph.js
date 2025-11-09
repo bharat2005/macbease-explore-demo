@@ -7,8 +7,8 @@ const EventStack = createNativeStackNavigator()
 
 const EventsNavGraph = () => {
   return (
-    <EventStack.Navigator screenOptions={{headerShown:false, animation:'slide_from_left'}} initialRouteName='events'>
-        <EventStack.Screen name="events" component={EventsScreen} options={{animation:'slide_from_left'}} />
+    <EventStack.Navigator screenOptions={{headerShown:false}} initialRouteName='events'>
+        <EventStack.Screen name="events" component={EventsScreen} />
     </EventStack.Navigator>
   )
 }
