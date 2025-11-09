@@ -14,6 +14,8 @@ const EventsScreen = () => {
 
         <TimingFilterBar />
 
+        
+
 
       <FilterBottomSheet sheetRef={sheetRef} onSheetClose={()=>{sheetRef.current.dismiss()}} />
     </SafeAreaView>
