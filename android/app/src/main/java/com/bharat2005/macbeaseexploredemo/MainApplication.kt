@@ -1,4 +1,4 @@
-package com.macbeaseexploredemo
+package com.bharat2005.macbeaseexploredemo
 
 import android.app.Application
 import android.content.res.Configuration

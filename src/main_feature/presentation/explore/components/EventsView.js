@@ -7,6 +7,7 @@ import Entypo from '@expo/vector-icons/Entypo';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import Colors from '../../../../../constants/Colors';
+import { useNavigation } from '@react-navigation/native';
 
 const eventsData = [
     {
@@ -48,6 +49,7 @@ const eventsData = [
 ]
 
 const EventsView = () => {
+    const navigation = useNavigation()
 
     const eventComp = ({item}) => {
         return (
@@ -116,7 +118,7 @@ const EventsView = () => {
 
   return (
     <View style={{width:'100%'}}>
-      <CrousalHeader title={"Events you can't miss!"} moreButton={true}/>
+      <CrousalHeader title={"Events you can't miss!"} moreButton={true} onClick={()=> {navigation.navigate("eventsgraph",{screen:'events'})}} />
 
       <FlatList
       horizontal

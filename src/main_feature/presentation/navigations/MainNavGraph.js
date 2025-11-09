@@ -3,7 +3,6 @@
 import { View, Text, StatusBar } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { NavigationContainer } from '@react-navigation/native'
 import HomeScreen from '../home/HomeScreen'
 import ExploreScreen from '../explore/ExploreScreen'
 import SearchScreen from '../search/SearchScreen'
@@ -16,20 +15,10 @@ import { useFonts } from 'expo-font'
 const Tab = createBottomTabNavigator()
 
 const MainNavGraph = () => {
-  
-  useFonts({
-    "poppins-bold":require("../../../../assets/font/Poppins-Bold.ttf"),
-    "poppins-light":require("../../../../assets/font/Poppins-Light.ttf"),
-    "poppins-medium":require("../../../../assets/font/Poppins-Medium.ttf"),
-    "poppins-regular":require("../../../../assets/font/Poppins-Regular.ttf"),
-    "poppins-semibold":require("../../../../assets/font/Poppins-SemiBold.ttf"),
-  })
-  
 
 
   return (
-    <NavigationContainer>
-      <StatusBar barStyle="dark-content" />
+   
         <Tab.Navigator 
         initialRouteName='Explore'
         screenOptions={({route})=> ({
@@ -53,7 +42,7 @@ const MainNavGraph = () => {
           <Tab.Screen name={"Explore"} component={ExploreScreen}/>
           <Tab.Screen name={"Search"} component={SearchScreen}/>
         </Tab.Navigator>
-    </NavigationContainer>
+ 
   )
 }
 
