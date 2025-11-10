@@ -8,7 +8,7 @@ import Feather from '@expo/vector-icons/Feather';
 const EventsSearchTabBar = ({openBottomSheet}) => {
     const navigation = useNavigation()
   return (
-    <View style={{width:'100%', height:50,gap:12, flexDirection:'row', alignItems:'center', paddingVertical:6, paddingHorizontal:12}}>
+    <View style={{width:'100%', height:55,gap:12, flexDirection:'row', alignItems:'center', paddingVertical:6, paddingHorizontal:12}}>
       
       {/* NavigateBack */}
       <TouchableOpacity onPress={()=>{navigation.goBack()}}>

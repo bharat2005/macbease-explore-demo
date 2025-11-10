@@ -1,13 +1,75 @@
-import { View, Text, Dimensions } from 'react-native'
+import { View, Text, Dimensions, FlatList } from 'react-native'
 import React, { useState } from 'react'
 import { SceneMap, TabView } from 'react-native-tab-view'
 import EventCategorriesTabBar from './EventCategorriesTabBar'
 import { Ionicons, MaterialCommunityIcons, FontAwesome5, Feather, Octicons } from '@expo/vector-icons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
+const eventsData = [
+    {
+        id:1,
+        image:require("../../../../../assets/images/a.jpg"),
+        dateString:"11 October",
+        timeString:"9am - 10pm",
+        title:"LPU Innovate Now",
+        hostedBy:"Organised by Department of Enturpenuratship",
+        location:"In Campus"
+     },
+         {
+        id:2,
+         image:require("../../../../../assets/images/b.jpg"),
+         dateString:"25 November",
+        timeString:"5pm - 8pm",
+        title:"Comic Verse",
+        hostedBy:"Organised by Play2Unite",
+        location:"SDMA - Auditorium"
+     },
+         {
+        id:3,
+         image:require("../../../../../assets/images/c.jpg"),
+        dateString:"17 November",
+        timeString:"5pm - 7pm",
+        title:"Opening Showdown",
+        hostedBy:"Organised by Pawn Knight",
+        location:"Block 13, DSW"
+     },
+         {
+        id:4,
+         image:require("../../../../../assets/images/d.jpg"),
+        dateString:"2 November",
+        timeString:"5pm - 7pm",
+        title:"Dead Poet's Society",
+        hostedBy:"Organised by Macbease Crew",
+        location:"Block 13, DSW"
+     },
+]
+
+
 const EmptyComp = () => {
+  const [refreshing, setRefreshing] = useState(false)
+
+  const mockLoad = async () => {
+    setRefreshing(true)
+    await new Promise((resolve, reject)=> {setTimeout(()=>resolve("Done"), 3000)})
+    setRefreshing(false)
+  }
+
+  const renderItem = () => {
+    return  (
+      <></>
+    )
+  }
     return (
-        <Text>NOting here</Text>
+        <View style={{flex:1}}>
+
+          <FlatList 
+            onRefresh={mockLoad}
+            refreshing={refreshing}
+            data={eventsData}
+            renderItem={renderItem}
+          />
+
+        </View>
     )
 }
 
