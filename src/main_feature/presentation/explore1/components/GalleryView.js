@@ -80,12 +80,12 @@ const GalleryView = () => {
         />
 
         <TouchableOpacity onPress={goToPrev} style={{position:'absolute', left:18, top:'40%', height:50, width:50,  justifyContent:'center', alignItems:'center'}}    >
-            <Entypo name="chevron-thin-left" size={28} color="white" />
+            <Entypo name="chevron-thin-left" size={22} color="white" />
         </TouchableOpacity>
 
         
         <TouchableOpacity onPress={goToNext} style={{position:'absolute', right:18, top:'40%', height:50, width:50, justifyContent:'center', alignItems:'center'}}    >
-            <Entypo name="chevron-thin-right" size={28} color="white" />
+            <Entypo name="chevron-thin-right" size={22} color="white" />
         </TouchableOpacity>
 
         </View>

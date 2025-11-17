@@ -16,6 +16,7 @@ import Explore1ClubsView from "./components/Explore1ClubsView";
 import Explore1NormalCrousalView from "./components/Explore1NormalCrousalView";
 import AllinOnePlaceView from "./components/AllinOnePlaceView";
 import GalleryView from "./components/GalleryView";
+import BarsCrousal from "./components/BarsCrousal";
 
 const HEADER_MAX_HEIGHT = 240;
 
@@ -122,6 +123,8 @@ const Explore1Screen = () => {
 
 
 <Explore1NormalCrousalView hiData={topPastData} headerText={"Happening this week"}/>
+
+<BarsCrousal />
 
         <Explore1ClubsView />
 
