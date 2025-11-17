@@ -14,6 +14,7 @@ import Explore1CrousalView from "./components/Explore1CrousalView";
 import SearchBarCategories from "./components/SearchBarCategories";
 import Explore1ClubsView from "./components/Explore1ClubsView";
 import Explore1NormalCrousalView from "./components/Explore1NormalCrousalView";
+import AllinOnePlaceView from "./components/AllinOnePlaceView";
 
 const HEADER_MAX_HEIGHT = 240;
 
@@ -31,14 +32,26 @@ const topClubsData = [
 
 
 const topCommuData = [
-    { id: 1, image: require("../../../../assets/images/club1.png"), title: "Arts" },
-    { id: 2, image: require("../../../../assets/images/club2.png"), title: "Sports" },
-    { id: 3, image: require("../../../../assets/images/club3.png"), title: "Tech" },
-    { id: 4, image: require("../../../../assets/images/club4.png"), title: "Education" },
-        { id: 5, image: require("../../../../assets/images/club1.png"), title: "Arts" },
-    { id: 6, image: require("../../../../assets/images/club2.png"), title: "Sports" },
-    { id: 7, image: require("../../../../assets/images/club3.png"), title: "Tech" },
-    { id: 8, image: require("../../../../assets/images/club4.png"), title: "Education" },
+    { id: 1, image: require("../../../../assets/images/commu1.png"), title: "Arts" },
+    { id: 2, image: require("../../../../assets/images/commu2.png"), title: "Sports" },
+    { id: 3, image: require("../../../../assets/images/commu3.png"), title: "Tech" },
+    { id: 4, image: require("../../../../assets/images/commu4.png"), title: "Education" },
+        { id: 5, image: require("../../../../assets/images/commu1.png"), title: "Arts" },
+    { id: 6, image: require("../../../../assets/images/commu2.png"), title: "Sports" },
+    { id: 7, image: require("../../../../assets/images/commu3.png"), title: "Tech" },
+    { id: 8, image: require("../../../../assets/images/commu4.png"), title: "Education" },
+
+];
+
+const topPastData = [
+    { id: 1, image: require("../../../../assets/images/past1.png"), title: "Arts" },
+    { id: 2, image: require("../../../../assets/images/past2.png"), title: "Sports" },
+    { id: 3, image: require("../../../../assets/images/past3.png"), title: "Tech" },
+    { id: 4, image: require("../../../../assets/images/past4.png"), title: "Education" },
+    { id: 5, image: require("../../../../assets/images/past1.png"), title: "Arts" },
+    { id: 6, image: require("../../../../assets/images/past2.png"), title: "Sports" },
+    { id: 7, image: require("../../../../assets/images/past3.png"), title: "Tech" },
+    { id: 8, image: require("../../../../assets/images/past4.png"), title: "Education" },
 
 ];
 
@@ -110,7 +123,11 @@ const Explore1Screen = () => {
 
         <Explore1NormalCrousalView hiData={topClubsData} headerText={"Top Clubs"}/>
 
-            <Explore1NormalCrousalView hiData={topClubsData} headerText={"Top Communities"}/>
+        <Explore1NormalCrousalView hiData={topCommuData} headerText={"Top Communities"}/>
+
+        <AllinOnePlaceView />
+
+         <Explore1NormalCrousalView hiData={topPastData} headerText={"Top Past Events"}/>
 
 
 
