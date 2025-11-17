@@ -1,46 +1,33 @@
 
-
-import { View, Text, StatusBar } from 'react-native'
-import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import HomeScreen from '../home/HomeScreen'
-import ExploreScreen from '../explore/ExploreScreen'
-import SearchScreen from '../search/SearchScreen'
 import { Ionicons, FontAwesome, Feather } from '@expo/vector-icons';
 import Colors from '../../../../constants/Colors'
+import ExploreScreen from '../explore/ExploreScreen';
+import Explore1Screen from '../explore1/Explore1Screen';
+import Explore3Screen from '../explore3/Explore3Screen';
 
-import { useFonts } from 'expo-font'
+
 
 
 const Tab = createBottomTabNavigator()
 
 const MainNavGraph = () => {
-
-
   return (
    
         <Tab.Navigator 
-        initialRouteName='Explore'
+        initialRouteName='Explore1'
         screenOptions={({route})=> ({
           headerShown: false,
           tabBarIcon: ({focused, color, size})=>{
-            let icon
-            if(route.name === "Home"){
-              icon = focused ? <FontAwesome name="home" size={size} color={color} /> : <FontAwesome name="home" size={size} color={color} />
-            } else if(route.name === "Explore"){
-              icon = focused ? <Ionicons name="compass" size={size} color={color} /> : <Ionicons name="compass-outline" size={size} color={color} />
-            } else if(route.name === "Search"){
-              icon = focused ? <Feather name="search" size={size} color={color} /> : <Feather name="search" size={size} color={color} />
-            }
-            return icon;
+            return focused ? <Ionicons name="compass" size={size} color={color} /> : <Ionicons name="compass-outline" size={size} color={color} />;
           },
           tabBarActivveTintColor: Colors.primary,
           tabBarInactiveTintColor: 'black',
 
         })}>
-          <Tab.Screen name={"Home"} component={HomeScreen}/>
-          <Tab.Screen name={"Explore"} component={ExploreScreen}/>
-          <Tab.Screen name={"Search"} component={SearchScreen}/>
+          <Tab.Screen name={"Explore1"} component={Explore1Screen}/>
+          <Tab.Screen name={"Explore2"} component={ExploreScreen}/>
+          <Tab.Screen name={"Explore3"} component={Explore3Screen}/>
         </Tab.Navigator>
  
   )

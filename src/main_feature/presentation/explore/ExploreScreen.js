@@ -62,20 +62,7 @@ const ExploreScreen = () => {
 
         <DocsView/>
 
-
-
-
-
-
-
-
       </Animated.ScrollView>
-
-
-
-
-      
-      
     
     </View>
   )
