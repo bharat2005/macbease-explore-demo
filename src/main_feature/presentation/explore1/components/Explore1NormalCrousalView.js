@@ -15,10 +15,13 @@ const Explore1NormalCrousalView = ({hiData, headerText}) => {
  
               
                     return(
+                      <View>
                         <View style={{height:180, width:140, backgroundColor:'gray', borderRadius:12, justifyContent:'center', alignItems:'center', overflow:'hidden', borderWidth:0.8, borderColor:'darkgray'}}>
                             <Image source={item.image} style={{position:'absolute', height:'100%', width:'100%'}} resizeMode='cover' />
                         
                         </View>
+                        { (item.text) && <Text style={{alignSelf:'center', fontSize:16, fontWeight:'300'}}>{item.text}</Text> }
+                      </View>
          
         )
     }

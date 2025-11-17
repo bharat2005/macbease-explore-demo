@@ -15,6 +15,7 @@ import SearchBarCategories from "./components/SearchBarCategories";
 import Explore1ClubsView from "./components/Explore1ClubsView";
 import Explore1NormalCrousalView from "./components/Explore1NormalCrousalView";
 import AllinOnePlaceView from "./components/AllinOnePlaceView";
+import GalleryView from "./components/GalleryView";
 
 const HEADER_MAX_HEIGHT = 240;
 
@@ -44,14 +45,14 @@ const topCommuData = [
 ];
 
 const topPastData = [
-    { id: 1, image: require("../../../../assets/images/past1.png"), title: "Arts" },
-    { id: 2, image: require("../../../../assets/images/past2.png"), title: "Sports" },
-    { id: 3, image: require("../../../../assets/images/past3.png"), title: "Tech" },
-    { id: 4, image: require("../../../../assets/images/past4.png"), title: "Education" },
-    { id: 5, image: require("../../../../assets/images/past1.png"), title: "Arts" },
-    { id: 6, image: require("../../../../assets/images/past2.png"), title: "Sports" },
-    { id: 7, image: require("../../../../assets/images/past3.png"), title: "Tech" },
-    { id: 8, image: require("../../../../assets/images/past4.png"), title: "Education" },
+    { id: 1, image: require("../../../../assets/images/past1.png"), text: "Spectra 2025" },
+    { id: 2, image: require("../../../../assets/images/past2.png"), text: "Comic Verse" },
+    { id: 3, image: require("../../../../assets/images/past3.png"), text: "Showdown" },
+    { id: 4, image: require("../../../../assets/images/past4.png"), text: "Infinite premier" },
+    { id: 5, image: require("../../../../assets/images/past1.png"), text: "Spectra 2025" },
+    { id: 6, image: require("../../../../assets/images/past2.png"), text: "Spectra 2025" },
+    { id: 7, image: require("../../../../assets/images/past3.png"), text: "Spectra 2025" },
+    { id: 8, image: require("../../../../assets/images/past4.png"), text: "Spectra 2025" },
 
 ];
 
@@ -119,6 +120,9 @@ const Explore1Screen = () => {
           <SearchBarCategories />
         </View>
 
+
+<Explore1NormalCrousalView hiData={topPastData} headerText={"Happening this week"}/>
+
         <Explore1ClubsView />
 
         <Explore1NormalCrousalView hiData={topClubsData} headerText={"Top Clubs"}/>
@@ -128,6 +132,8 @@ const Explore1Screen = () => {
         <AllinOnePlaceView />
 
          <Explore1NormalCrousalView hiData={topPastData} headerText={"Top Past Events"}/>
+
+         <GalleryView />
 
 
 

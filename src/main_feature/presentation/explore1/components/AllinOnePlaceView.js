@@ -56,7 +56,7 @@ const AllinOnePlaceView = () => {
 
 
   return (
-    <View style={{width:'100%', marginVertical:18}}>
+    <View style={{width:'100%'}}>
       <CrousalHeader title="All in One Place"/>
 
 
