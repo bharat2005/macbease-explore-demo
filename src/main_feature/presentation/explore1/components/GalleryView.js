@@ -2,50 +2,33 @@ import { View, Text, FlatList, Dimensions, Image, TouchableOpacity } from 'react
 import React, { useRef, useState } from 'react'
 import CrousalHeader from '../../explore/components/CrousalHeader'
 import Entypo from '@expo/vector-icons/Entypo';
+import SmartImage2 from './SmartImage2';
 
-const data = [
-    {
-        id:1,
-        title:"SunBurn",
-        image : require("../../../../../assets/images/sunburn.png")
-    },
-    {
-        id:2,
-        title:"SunBurn",
-        image : require("../../../../../assets/images/sunburn.png")
-    },
-    {
-        id:3,
-        title:"SunBurn",
-        image : require("../../../../../assets/images/sunburn.png")
-    },
-    {
-        id:4,
-        title:"SunBurn",
-        image : require("../../../../../assets/images/sunburn.png")
-    },
-]
-const GalleryView = () => {
+
+const GalleryView = ({data, uiSignature}) => {
     const flatListRef = useRef(null)
-    const [currentIndex, setCurrentIndex] = useState(0)
+    const [currentCardIndex, setCurrentCardIndex] = useState(0)
+    const [imageIndex, setImageIndex] = useState(0) 
 
-    const handleScrolled = (e) =>{
-        const offsetx = e.nativeEvent.contentOffset.x
-        const index = Math.round(offsetx / Dimensions.get('screen').width)
-        setCurrentIndex(index)
-        
+    const handleScroll = (e) =>{
+        const index = Math.round(e.nativeEvent.contentOffset.x / Dimensions.get("screen").width)
+        setCurrentCardIndex(index)
+        setImageIndex(0)
     }
 
-    const goToNext= () =>{
-        if(currentIndex < data.length - 1){
-            flatListRef.current.scrollToIndex({index:currentIndex + 1, animated:true})
+    const goToNext = () =>{
+        const gallary = data[currentCardIndex].gallery
+        if(imageIndex < gallary.length - 1){
+            setImageIndex(prev => prev + 1)
         }
     }
-    const goToPrev= () =>{
-        if(currentIndex > 0){
-            flatListRef.current.scrollToIndex({index:currentIndex - 1, animated:true})
+
+    const goToPrev = () =>{
+            if(imageIndex > 0){
+            setImageIndex(prev => prev - 1)
         }
     }
+
 
 
     const renderItem = ({item})=>{
@@ -53,8 +36,8 @@ const GalleryView = () => {
             <View style={{width:Dimensions.get('screen').width, height:200, paddingHorizontal:18}}>
 
                 <View style={{width:'100%', height:'100%', backgroundColor:'gray', borderRadius:12, overflow:'hidden', justifyContent:'center', alignItems:'center'}}>
-                    <Image source={item.image} style={{height:'100%', width:'100%', position:'absolute'}} />
-                    <Text style={{color:'white', fontSize:38, fontWeight:'600'}}>{item.title}</Text>
+                    <SmartImage2 imgKey={item.gallery[imageIndex].url} height={1000} width={1000} style={{height:'100%', width:'100%', position:'absolute'}} />
+                    <Text style={{color:'white', fontSize:34, fontWeight:'600', textAlign:'center'}}>{item.name}</Text>
 
                 </View>
 
@@ -65,16 +48,17 @@ const GalleryView = () => {
 
   return (
     <View style={{width:'100%'}}>
-        <CrousalHeader title={"Events Gallery"}/>
+        <CrousalHeader title={uiSignature}/>
 
         <View>
         <FlatList 
+        onScroll={handleScroll}
         ref={flatListRef}
+        scrollEventThrottle={16}
         data = {data}
+        showsHorizontalScrollIndicator={false}
         horizontal
-        showsHorizontalScrollIndicatr={false}
         pagingEnabled
-        onMomentumScrollEnd={handleScrolled}
         renderItem={renderItem}
         style={{marginVertical:12}}
         />

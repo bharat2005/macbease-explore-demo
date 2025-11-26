@@ -1,5 +1,5 @@
-import { View, Text } from "react-native";
-import React from "react";
+import { View, Text, Image } from "react-native";
+import React, { Fragment, useMemo } from "react";
 import Animated, {
   Extrapolation,
   interpolate,
@@ -17,131 +17,66 @@ import Explore1NormalCrousalView from "./components/Explore1NormalCrousalView";
 import AllinOnePlaceView from "./components/AllinOnePlaceView";
 import GalleryView from "./components/GalleryView";
 import BarsCrousal from "./components/BarsCrousal";
-
-const HEADER_MAX_HEIGHT = 240;
-
-const topClubsData = [
-    { id: 1, image: require("../../../../assets/images/club1.png"), title: "Arts" },
-    { id: 2, image: require("../../../../assets/images/club2.png"), title: "Sports" },
-    { id: 3, image: require("../../../../assets/images/club3.png"), title: "Tech" },
-    { id: 4, image: require("../../../../assets/images/club4.png"), title: "Education" },
-        { id: 5, image: require("../../../../assets/images/club1.png"), title: "Arts" },
-    { id: 6, image: require("../../../../assets/images/club2.png"), title: "Sports" },
-    { id: 7, image: require("../../../../assets/images/club3.png"), title: "Tech" },
-    { id: 8, image: require("../../../../assets/images/club4.png"), title: "Education" },
-
-];
-
-
-const topCommuData = [
-    { id: 1, image: require("../../../../assets/images/commu1.png"), title: "Arts" },
-    { id: 2, image: require("../../../../assets/images/commu2.png"), title: "Sports" },
-    { id: 3, image: require("../../../../assets/images/commu3.png"), title: "Tech" },
-    { id: 4, image: require("../../../../assets/images/commu4.png"), title: "Education" },
-        { id: 5, image: require("../../../../assets/images/commu1.png"), title: "Arts" },
-    { id: 6, image: require("../../../../assets/images/commu2.png"), title: "Sports" },
-    { id: 7, image: require("../../../../assets/images/commu3.png"), title: "Tech" },
-    { id: 8, image: require("../../../../assets/images/commu4.png"), title: "Education" },
-
-];
-
-const topPastData = [
-    { id: 1, image: require("../../../../assets/images/past1.png"), text: "Spectra 2025" },
-    { id: 2, image: require("../../../../assets/images/past2.png"), text: "Comic Verse" },
-    { id: 3, image: require("../../../../assets/images/past3.png"), text: "Showdown" },
-    { id: 4, image: require("../../../../assets/images/past4.png"), text: "Infinite premier" },
-    { id: 5, image: require("../../../../assets/images/past1.png"), text: "Spectra 2025" },
-    { id: 6, image: require("../../../../assets/images/past2.png"), text: "Spectra 2025" },
-    { id: 7, image: require("../../../../assets/images/past3.png"), text: "Spectra 2025" },
-    { id: 8, image: require("../../../../assets/images/past4.png"), text: "Spectra 2025" },
-
-];
+import Searchbar from "./components/Searchbar";
+import CrousalData from "../../../constants/CrousalData";
+import FeaturedEventsView from "./components/FeaturedEventsView";
+import TopClubsView from "./components/TopClubsView";
+import TopCommunityView from "./components/TopCommunityView"
+import PastEventsView from './components/PastEventsView'
+import SmartImage2 from "./components/SmartImage2";
 
 
 const Explore1Screen = () => {
-  const scrollY = useSharedValue(0);
 
-  const onScroll = useAnimatedScrollHandler({
-    onScroll: (e) => {
-      scrollY.value = e.contentOffset.y;
-    },
-  });
 
-  const crousalFadeStyle = useAnimatedStyle(() => {
-    const opacity = interpolate(
-      scrollY.value,
-      [0, HEADER_MAX_HEIGHT / 2, HEADER_MAX_HEIGHT],
-      [1, 0.5, 0],
-      Extrapolation.CLAMP
-    );
-    return {
-      opacity,
-    };
-  });
+  const alignSignature = {
+    pagination:Explore1CrousalView,
+    generic_filters:SearchBarCategories,
+    featured_events:FeaturedEventsView,
+    banner: BarsCrousal,
+    quadrant_filters:Explore1ClubsView,
+    top_clubs:TopClubsView,
+    top_communities:TopCommunityView,
+    tile_filters:AllinOnePlaceView,
+    past_events:PastEventsView,
+    event_gallery:GalleryView
+  }
+
+  const renderItem = (item, index) =>{
+    const Comp = alignSignature[item.uiSignature]
+    if(Comp){
+      return <Comp data={item.data} uiSignature={item.uiSignature} />
+    } else {
+      return <></>
+    }
+  
+  }
+
 
   return (
-    <SafeAreaView edges={["top"]} style={{backgroundColor:'white'}}>
+    <SafeAreaView edges={["top"]} style={{ backgroundColor: "white" }}>
+
+
       <Animated.ScrollView
         showsVerticalScrollIndicator={false}
-        onScroll={onScroll}
-        contentContainerStyle={{gap:12}}
-        stickyHeaderIndices={[1]}
+        contentContainerStyle={{ gap: 12 }}
+        stickyHeaderIndices={[0]}
       >
-        {/* AnimatedCrousal */}
-        <Animated.View style={[{ height: HEADER_MAX_HEIGHT, marginBottom:8 }, crousalFadeStyle]}>
-          <Explore1CrousalView />
-        </Animated.View>
 
-        {/* SerachBarHeader */}
-        <View
-          style={{
-            width: "100%",
-            backgroundColor:'white',
-            marginBottom:6
-          }}
-        >
-          <View
-            style={{
-              width:'92%',
-              height: 50,
-              alignSelf:'center',
-              backgroundColor: "lightgray",
-              paddingHorizontal: 14,
-              borderRadius: 12,
-              flexDirection: "row",
-              gap: 12,
-              alignItems: "center",
-            }}
-          >
-            <Feather name="search" size={24} color="black" />
+        <Searchbar/>
 
-            <Text>Explore events you might like</Text>
-          </View>
+   
 
-          <SearchBarCategories />
-        </View>
-
-
-<Explore1NormalCrousalView hiData={topPastData} headerText={"Happening this week"}/>
-
-<BarsCrousal />
-
-        <Explore1ClubsView />
-
-        <Explore1NormalCrousalView hiData={topClubsData} headerText={"Top Clubs"}/>
-
-        <Explore1NormalCrousalView hiData={topCommuData} headerText={"Top Communities"}/>
-
-        <AllinOnePlaceView />
-
-         <Explore1NormalCrousalView hiData={topPastData} headerText={"Top Past Events"}/>
-
-         <GalleryView />
-
-
-
-
-
+        {
+          CrousalData.blocks.map((item, index)=>{
+            return (
+            <Fragment key={item.order}>
+              {renderItem(item, index)}
+            </Fragment>
+            )
+          })
+          
+        }
 
       </Animated.ScrollView>
     </SafeAreaView>

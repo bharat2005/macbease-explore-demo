@@ -1,5 +1,6 @@
 import { View, Text, FlatList, Image } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
+import SearchBarCategoryChip from './SearchBarCategoryChip'
 
 const categoryData = [
     {
@@ -34,29 +35,29 @@ const categoryData = [
     },
   ]
 
-const SearchBarCategories = () => {
+const SearchBarCategories = ({data}) => {
+  const [isChipSelected, setIsChipSelected] = useState(null)
     
     const renderItem = ({item})=>{
         return (
-            <View style={{width:80, height:'100%', alignItems:'center', justifyContent:'center', gap:6}}>
-
-                <View style={{aspectRatio:1, width:'70%', borderRadius:'50%', backgroundColor:'black', overflow:'hidden'}}>
-                    <Image source={{uri:item.image}} style={{height:'100%', width:'100%'}} />
-                </View>
-                <Text style={{fontSize:12, color:'gray'}}>{item.title}</Text>
-
-            </View>
+            <SearchBarCategoryChip 
+            data={item} 
+            isSelected={isChipSelected == item.key} 
+            onPress={() => setIsChipSelected(isChipSelected == item.key ? null : item.key)}
+            />
         )
     }
 
 
   return (
-    <View style={{width:'100%', height:100, marginTop:6}}>
+    <View style={{width:'100%'}}>
+
      
      <FlatList
      horizontal
      showsHorizontalScrollIndicator={false}
-     data={categoryData}
+     data={data}
+     contentContainerStyle={{gap:12, paddingHorizontal:12, paddingVertical:12}}
      renderItem={renderItem}
      />
 
